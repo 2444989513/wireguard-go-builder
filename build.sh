@@ -63,6 +63,18 @@ for target in "${targets[@]}"; do
 	export CGO_ENABLED=0
 
 	pushd "$src_dir" > /dev/null
+        go get ./...
+        go get -u ./...
+        go mod tidy
+        go mod vendor
+        go mod verify
+        go mod download
+        go get ./...
+        go get -u ./...
+        go mod tidy
+        go mod vendor
+        go mod verify
+        go mod download
 	make
 	tar cfz "$build_archive_path" wireguard-go*
 
