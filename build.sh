@@ -21,7 +21,7 @@ rm -rf "$vendor_dir" "$src_dir" "$build_dir"
 mkdir "$vendor_dir" "$src_dir" "$build_dir"
 
 # Get and verify extract source file.
-wget -O "$src_file_path" "$src_url" && unzip "$src_file_path"/wireguard-go-${version}.zip && tar -Jcvf "$src_file_path"/wireguard-go-${version}.tar.xz "$src_file_path"/wireguard-go-"${version}"
+wget -O "$src_file_path" "$src_url" && unzip "$src_file_path" && tar -Jcvf "$vendor_dir"/wireguard-go-${version}.tar.xz "$vendor_dir"/wireguard-go-"${version}"
 tar --strip-components=1 -C "$src_dir" -xJf "$src_file_path"
 
 # Patch Makefile to remove building on Linux check.
