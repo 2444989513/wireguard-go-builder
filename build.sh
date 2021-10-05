@@ -6,8 +6,8 @@ set -u
 
 version="${WGGO_VERSION}"
 
-src_file="wireguard-go-${version}.tar.xz"
-src_url="https://git.zx2c4.com/wireguard-go/snapshot/${src_file}"
+src_file="wireguard-go-${version}.zip"
+src_url="https://github.com/2444989513/wireguard-go/releases/download/${version}/${src_file}"
 
 base_dir="$PWD"
 vendor_dir="$base_dir/vendor"
@@ -21,7 +21,7 @@ rm -rf "$vendor_dir" "$src_dir" "$build_dir"
 mkdir "$vendor_dir" "$src_dir" "$build_dir"
 
 # Get and verify extract source file.
-wget -O "$src_file_path" "$src_url"
+wget -O "$src_file_path" "$src_url" && unzip "$src_file_path"/wireguard-go-${version}.zip && tar -Jcvf "$src_file_path"/wireguard-go-${version}.tar.xz "$src_file_path"/wireguard-go-"${version}"
 tar --strip-components=1 -C "$src_dir" -xJf "$src_file_path"
 
 # Patch Makefile to remove building on Linux check.
