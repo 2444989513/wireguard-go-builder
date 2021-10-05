@@ -18,7 +18,7 @@ src_file_path="$vendor_dir/$src_file"
 # Remove existing build directories (add write access to src directories to avoid permission issues).
 chmod -R u+w "$src_dir" || true
 rm -rf "$vendor_dir" "$src_dir" "$build_dir"
-mkdir "$vendor_dir" "$src_dir" "$build_dir"
+mkdir -p "$vendor_dir" "$src_dir" "$build_dir"
 
 # Get and verify extract source file.
 wget -O "$src_file_path" "$src_url"
