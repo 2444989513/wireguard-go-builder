@@ -22,7 +22,7 @@ mkdir -p "$vendor_dir" "$src_dir" "$build_dir"
 
 # Get and verify extract source file.
 wget -O "$src_file_path" "$src_url"
-unzip -d "$base_dir" "$src_file_path"
+unzip -qq "$src_file_path" -d "$base_dir"
 pwd
 mv "$base_dir"/wireguard-go-"${version}"/wireguard-go-"${version}" "${src_dir}"
 # && tar -Jcvf "$vendor_dir"/wireguard-go-"${version}".tar.xz "$base_dir"/wireguard-go-"${version}"
