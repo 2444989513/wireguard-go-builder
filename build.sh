@@ -21,8 +21,10 @@ rm -rf "$vendor_dir" "$src_dir" "$build_dir"
 mkdir "$vendor_dir" "$src_dir" "$build_dir"
 
 # Get and verify extract source file.
-wget -O "$src_file_path" "$src_url" && unzip -d "$base_dir" "$src_file_path" && tar -Jcvf "$vendor_dir"/wireguard-go-"${version}".tar.xz "$base_dir"/wireguard-go-"${version}"
-tar --strip-components=1 -C "$src_dir" -xJf "$vendor_dir"/wireguard-go-"${version}".tar.xz
+wget -O "$src_file_path" "$src_url"
+
+#&& unzip -d "$base_dir" "$src_file_path" && tar -Jcvf "$vendor_dir"/wireguard-go-"${version}".tar.xz "$base_dir"/wireguard-go-"${version}"
+#tar --strip-components=1 -C "$src_dir" -xJf "$vendor_dir"/wireguard-go-"${version}".tar.xz
 
 # Patch Makefile to remove building on Linux check.
 sed -i.bak 's/$(wildcard .git),linux/$(wildcard .git),linux_check_disabled/g' "$src_dir/Makefile"
