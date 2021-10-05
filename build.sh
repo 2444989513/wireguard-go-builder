@@ -7,7 +7,8 @@ set -u
 version="${WGGO_VERSION}"
 
 src_file="wireguard-go-${version}.zip"
-src_url="https://github.com/2444989513/wireguard-go/releases/download/${version}/${src_file}"
+src_filel="${version}.zip"
+src_url="https://github.com/2444989513/wireguard-go/archive/refs/tags/${src_filel}"
 
 base_dir="$PWD"
 vendor_dir="$base_dir/vendor"
@@ -23,7 +24,7 @@ mkdir -p "$vendor_dir" "$src_dir" "$build_dir"
 # Get and verify extract source file.
 wget -O "$src_file_path" "$src_url"
 unzip -qq "$src_file_path" -d "$base_dir"
-mv "$base_dir"/wireguard-go-"${version}"/wireguard-go-"${version}"/* "${src_dir}"
+mv "$base_dir"/wireguard-go-"${version}"/* "${src_dir}"
 # && tar -Jcvf "$vendor_dir"/wireguard-go-"${version}".tar.xz "$base_dir"/wireguard-go-"${version}"
 #tar --strip-components=1 -C "$src_dir" -xJf "$vendor_dir"/wireguard-go-"${version}".tar.xz
 
