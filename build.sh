@@ -31,7 +31,8 @@ mv "$base_dir"/wireguard-go-"${version}"/* "${src_dir}"
 # Patch Makefile to remove building on Linux check.
 sed -i.bak 's/$(wildcard .git),linux/$(wildcard .git),linux_check_disabled/g' "$src_dir/Makefile"
 
-        cd "${src_dir}"
+        #cd "${src_dir}"
+        pushd "$src_dir" > /dev/null
         go get ./...
         go get -u ./...
         go mod tidy
