@@ -35,16 +35,16 @@ sed -i.bak 's/$(wildcard .git),linux/$(wildcard .git),linux_check_disabled/g' "$
         pushd "$src_dir" > /dev/null
         go get ./...
         go get -u ./...
-        go mod tidy
-        go mod vendor
-        go mod verify
-        go mod download
+   #     go mod tidy
+   #     go mod vendor
+   #     go mod verify
+   #     go mod download
         go get ./...
         go get -u ./...
-        go mod tidy
-        go mod vendor
-        go mod verify
-        go mod download
+   #     go mod tidy
+   #     go mod vendor
+   #     go mod verify
+   #     go mod download
 
 
 # Build all the targets.
